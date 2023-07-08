@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: AppTheme(
           selectedTheme: 5,
-          isDark: false,
+          isDark: true,
         ).themeData,
         routerConfig: mainRouter,
       ),

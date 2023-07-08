@@ -25,7 +25,12 @@ class CreateUser {
     data['username'] = username;
     data['email'] = email;
     data['password'] = password;
-    data['confirmPassword'] = confirmPassword;
+    data["emailVisibility"] = false;
+    data["name"] = null;
+    data["desc"] = null;
+    data['passwordConfirm'] = confirmPassword;
     return data;
   }
+
+
 }

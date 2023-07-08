@@ -3,8 +3,11 @@ import 'package:flutter_tutorial/core/models/meta_user.dart';
 import 'package:flutter_tutorial/core/services/pocketbase_client.dart';
 import 'package:flutter_tutorial/modules/auth/models/user_response.dart';
 
-Future<MetaUser?> loginUser(String usernameOrEmail, String password,
-    ValueNotifier<String?> notifier) async {
+Future<MetaUser?> loginUser({
+  required String usernameOrEmail,
+  required String password,
+  ValueNotifier<String?>? notifier,
+}) async {
   final pbClient = getPBClient();
 
   try {
@@ -24,7 +27,7 @@ Future<MetaUser?> loginUser(String usernameOrEmail, String password,
 
     return metaUser;
   } catch (e) {
-    notifier.value = 'Invalid username or password. Please try again.';
+    notifier?.value = 'Invalid username or password. Please try again.';
     return null;
   }
 }

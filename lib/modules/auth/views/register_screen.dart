@@ -143,17 +143,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         );
 
                         (() async {
-                          await createUserService(user, _handleServerError);
+                          try {
+                            final metaUser = await createUserService(
+                                user, _handleServerError);
 
-                          final metaUser = await loginUser(
-                            _usernameController.text.trim().toLowerCase(),
-                            _passwordController.text,
-                            _usernameErrorNotifier,
-                          );
-
-                          if (metaUser != null && context.mounted) {
-                            authContext.setMetaUser(metaUser);
-                            context.go('/list-chats');
+                            if (metaUser != null && context.mounted) {
+                              authContext.setMetaUser(metaUser);
+                              context.go('/list-chats');
+                            }
+                          } catch (error) {
+                            print(error);
                           }
                         })();
                       }

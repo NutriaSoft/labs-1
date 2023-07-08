@@ -95,9 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         (() async {
                           final metaUser = await loginUser(
-                            _usernameController.text.trim().toLowerCase(),
-                            _passwordController.text,
-                            _usernameErrorNotifier,
+                            usernameOrEmail:_usernameController.text.trim().toLowerCase(),
+                            password: _passwordController.text,
+                            notifier: _usernameErrorNotifier,
+                            
                           );
 
                           if (metaUser != null && context.mounted) {
